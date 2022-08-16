@@ -5,6 +5,4 @@ class Public::RegistrationsController < ApplicationController
   def create
   end
 
-  def destroy
-  end
 end
