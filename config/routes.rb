@@ -1,4 +1,31 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'adresses/index'
+    get 'adresses/edit'
+    get 'adresses/create'
+    get 'adresses/update'
+    get 'adresses/destroy'
+  end
+  namespace :public do
+    get 'orders/new'
+    get 'orders/confirm'
+    get 'orders/complete'
+    get 'orders/create'
+    get 'orders/index'
+    get 'orders/show'
+  end
+  namespace :public do
+    get 'cart_items/index'
+    get 'cart_items/update'
+    get 'cart_items/destroy'
+    get 'cart_items/destroy_all'
+    get 'cart_items/create'
+  end
+  namespace :public do
+    get 'sessions/new'
+    get 'sessions/create'
+    get 'sessions/destroy'
+  end
   namespace :admin do
     patch 'making_status/update'
   end
@@ -33,7 +60,7 @@ Rails.application.routes.draw do
     get 'sessions/new'
     get 'sessions/create'
     get 'sessions/destroy'
-  e
+  end
   namespace :public do
     get 'customers/show'
     get 'customers/edit'
