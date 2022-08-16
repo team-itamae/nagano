@@ -1,50 +1,49 @@
 Rails.application.routes.draw do
   namespace :public do
-    get 'adresses/index'
-    get 'adresses/edit'
-    get 'adresses/create'
-    get 'adresses/update'
-    get 'adresses/destroy'
+    get 'adresses/index' => "/adresses"
+    get 'adresses/edit' => "/adresses/:id/edit"
+    get 'adresses/create' => "/adresses"
+    get 'adresses/update' => "/adresses/:id"
+    get 'adresses/destroy' => "/adresses/:id"
   end
   namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
+    get 'orders/new' => "/orders/new"
+    get 'orders/confirm' => "/orders/confirm"
+    get 'orders/complete' => "/orders/complete"
+    get 'orders/create' => "/orders"
+    get 'orders/index' => "/orders"
+    get 'orders/show' => "/orders/:id"
   end
   namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
+    get 'cart_items/index' => "/cart_items"
+    get 'cart_items/update' => "/cart_items/:id"
+    get 'cart_items/destroy' => "/cart_items/:id"
+    get 'cart_items/destroy_all' => "/cart_items/destroy_all"
+    get 'cart_items/create' => "/cart_items"
   end
   namespace :public do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
+    get 'sessions/new' => "/customers/sign_in"
+    get 'sessions/create' => "/customers/sign_in"
+    get 'sessions/destroy' => "/customers/sign_out"
   end
     namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
+    get 'customers/show' => "/customers"
+    get 'customers/edit' => "/customers/edit"
+    get 'customers/update' => "/customers"
+    get 'customers/unsubscribe' => "/customers/unsubscribe"
+    get 'customers/withdraw' => "/customers/withdraw"
   end
   namespace :public do
-    get 'registrations/new'
-    get 'registrations/create'
-    get 'registrations/destroy'
+    get 'registrations/new' => "/customers/sign_up"
+    get 'registrations/create' => "//customers"
   end
   namespace :public do
-    get 'items/index'
-    get 'items/show'
+    get 'items/index' => "/items"
+    get 'items/show' => "/items/:id"
   end
   namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+    get 'homes/top' => "/"
+    get 'homes/about' => "/about"
   end
   namespace :admin do
     patch 'making_status/update' => "/admin/making_status/:id"
