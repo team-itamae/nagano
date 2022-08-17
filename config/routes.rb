@@ -2,22 +2,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'making_status/update'
-  end
-  namespace :admin do
+
     resources :orders, only: [:show, :update]
-  end
-  namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
-  end
-
-  namespace :admin do
-  resources :genres, only: [:index, :edit, :create, :update]
-  end
-
-  namespace :admin do
+    resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :create, :new, :edit, :update]
   end
 
+    get '/admin' => 'admin/homes#top'
 
     get 'adresses/index' => 'public/adresses#index'
     get 'adresses/edit' => 'public/adresses#edit'
