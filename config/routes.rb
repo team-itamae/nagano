@@ -1,52 +1,48 @@
 Rails.application.routes.draw do
-  
+
   namespace :admin do
     get 'making_status/update'
-  end
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
-  
-  resources :adresses, only:[:index, :create, :edit, :update, :destroy]
-  
-  resources :adresses, only:[:index, :create, :show, :new]
-  get 'orders/confirm'
-  get 'orders/complete'
 
-  resources :cart_items, only:[:index, :create, :update, :destroy]
-  get 'cart_items/destroy_all'
-  
-  resources :customers, only:[:show, :edit, :update]
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
+    resources :orders, only: [:show, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:index, :show, :create, :new, :edit, :update]
   end
+
+    get '/admin' => 'admin/homes#top'
+
+    get 'adresses/index' => 'public/adresses#index'
+    get 'adresses/edit' => 'public/adresses#edit'
+    post 'adresses/create' => 'public/adresses#create'
+    patch 'adresses/update' => 'public/adresses#update'
+    delete 'adresses/destroy' => 'public/adresses#destroy'
+
+    get 'orders/new' => 'public/orders#new'
+    post 'orders/confirm' => 'public/orders#confirm'
+    get 'orders/complete' => 'public/orders#complete'
+    post 'orders/create' => 'public/orders#create'
+    get 'orders/index' => 'public/orders#index'
+    get 'orders/show' => 'public/orders#show'
+
+    get 'cart_items/index' => 'public/cart_items#index'
+    patch 'cart_items/update' => 'public/cart_items#update'
+    delete 'cart_items/destroy' => 'public/cart_items#destroy'
+    delete 'cart_items/destroy_all' => 'public/cart_items#destroy_all'
+    post 'cart_items/create' => 'public/cart_items#create'
+
+
+    get 'customers/show' => 'public/customers#show'
+    get 'customers/edit' => 'public/customers#edit'
+    patch 'customers/update' => 'public/customers#update'
+    get 'customers/unsubscribe' => 'public/customers#unsubscribe'
+    patch 'customers/withdraw' => 'public/customers#withdraw'
+
+    get 'items/index' => 'public/items#index'
+    get 'items/show' => 'public/items/#show'
+
   get '/' => "public/homes#top"
   get '/about' => "public/homes#about"
- 
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
