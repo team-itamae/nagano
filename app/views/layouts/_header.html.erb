@@ -1,57 +1,51 @@
-<header>
+<header class="border-bottom border-dark">
   <nav class="navbar">
-    <div class="container">
-      <a href="root_path" class="btn" >LOGO</a>
+    <div class="container-fluid">
+      <a href="/" class="btn btn-outline-dark btn-lg text-left" >LOGO</a>
+      <div class="text-right">
+      <ul>
         <% if admin_signed_in? %>
-          <li>
-            <a href="root_path" class="btn" >商品一覧</a>
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> users
-            <% end %>
-          </li>
-          <li>
-            <%=  link_to books_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> books
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> logout
-            <% end %>
-          </li>
+
+            <a href="/admin/items" class="btn btn-outline-dark" >商品一覧</a>
+
+            <a href="/admin/customers" class="btn btn-outline-dark" >会員一覧</a>
+
+            <a href="/admin/orders/:id" class="btn btn-outline-dark" >注文履歴一覧</a>
+
+            <a href="/admin/genres" class="btn btn-outline-dark" >ジャンル一覧</a>
+
+            <a href="/admin/sign_out" class="btn btn-outline-dark" >ログアウト</a>
+            
+        <% elseif customers_signed_in? %>
+        
+            <a href="/customers" class="btn btn-outline-dark" >マイページ</a>
+
+            <a href="/items" class="btn btn-outline-dark" >商品一覧</a>
+
+            <a href="/cart_items" class="btn btn-outline-dark" >カート</a>
+            
+            <a href="/customers/sign_out" class="btn btn-outline-dark" >ログアウト</a>
+
         <% else %>
-          <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> home
-            <% end %>
-          </li>
-          <li>
-            <%= link_to home_about_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-link"></i> about
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> sign up
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> login
-            <% end %>
-          </li>
+
+            <a href="/about" class="btn btn-outline-dark" >About</a>
+
+            <a href="/items" class="btn btn-outline-dark" >商品一覧</a>
+
+            <a href="/customers/sign_up" class="btn btn-outline-dark" >新規登録</a>
+
+            <a href="/customers/sign_in" class="btn btn-outline-dark" >ログイン</a>
+
         <% end %>
         </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row">
-      <div class="mx-auto serch-form">
-      </div>
-    </div>
+        </div>
+        <br>
+        <div class="input-group text-right">
+  <input type="text" class="form-control10">
+  <i class="fa-solid fa-magnifying-glass" style="color: primary;"></i>
+</div>
   </div>
+  </div>
+  </nav>
+
 </header>
