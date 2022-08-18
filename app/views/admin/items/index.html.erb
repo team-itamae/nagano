@@ -1,2 +1,33 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<div class="container">
+  <div class = "row">
+   <h3><div class="d-inline mt-5 px-3 bg-light text-dark">商品一覧</div></h3>
+   <br>
+   <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td>
+              <%= item.id %>
+            </td>
+            <td>
+              <%= link_to admin_item_path(item.id) do %>
+                <%= item.name %>
+              <% end %>
+            </td>
+            <td><%= item.price %></td>
+            <td><%= item.genre.name %></td>
+          </tr>
+          <% end %>
+     </tbody>
+    </table>
+  </div>
+</div>
