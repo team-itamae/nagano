@@ -37,8 +37,8 @@ Rails.application.routes.draw do
     get 'customers/unsubscribe' => 'public/customers#unsubscribe'
     patch 'customers/withdraw' => 'public/customers#withdraw'
 
-    get 'items/index' => 'public/items#index'
-    get 'items/show' => 'public/items/#show'
+    get '/items' => 'public/items#index'
+    get '/items/:id' => 'public/items#show'
 
   get '/' => "public/homes#top"
   get '/about' => "public/homes#about"
