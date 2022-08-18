@@ -1,16 +1,23 @@
-<header class=''
-    <h2>商品詳細</h2>
-      <div class='container'>
-        <div class'row'>
-          <div class='col-md-3'>
-      
-      <table>
+<div class='container'>
+  <h4><div class="d-inline p-3 mb-2 bg-light text-dark font-weight-bold">商品詳細</div></h4>
+    <div class'row'>
+      <div class='col-lg-3'>
         <tr>
-          <tr>商品名</tr>
-          <tr>商品説明</tr>
-          <td>ジャンル</td>
+          <td>
+          </td>
         </tr>
-      </table>
+      <div class='col-lg-8'>
+        <p>商品名</p>
+        <p>商品説明</p>
+        <p>ジャンル</p>
+        <p>税込価格<br>
+          （税抜価格)
+        </p>
+        <p>販売ステータス</p>
+      </div>
+      <div class='actions col-xs-9'>
+        <%= link_to '編集する', edit_admin_item_path, class:'btn btn-sm btn-success', method: :edit %>
+      </div>
+      </div>
     </div>
-  </div>
 </div>
