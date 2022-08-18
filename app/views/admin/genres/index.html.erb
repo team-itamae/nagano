@@ -1,6 +1,5 @@
 <div class='container'>
-  <br />
-  <h3><div class="p-3 mb-2 bg-light text-black">ジャンル一覧・追加</div></h3>
+  <h3><div class="d-inline mt-5 px-3 bg-light text-dark">ジャンル一覧・追加</div></h3>
 
   <div class="row g-3 align-items-center">
   　<div class="col-auto">
@@ -15,21 +14,39 @@
 　</div>
 
 
-     <th>ジャンル</th>
-    
-     <tr>
-     <td>ケーキ</td>
 
-    </tr>
-  </table>
-<div class="actions"><br />
-          <%= link_to '編集する','/admin/genres/:id/edit', class: 'btn btn-sm btn-success'%>
-        </div>
+ <div class="row">
+   <div class="col-4">
+        <table class="table">
+                <tr>
+                    <th><div class=" px-3 head-light">ジャンル</div></th>
+                </tr>
 
+            <tbody>
+                <tr>
+                    <td>ケーキ</td>
+                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
+                </tr>
+                <tr>
+                    <td>プリン</td>
+                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
+                </tr>
+                <tr>
+                    <td>焼き菓子</td>
+                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
+                </tr>
+                <tr>
+                    <td>キャンディ</td>
+                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
+                </tr>
+                <tr>
+                 <% @genres.each do |genre| %>
+                   <td><%= genre.name %></td>
+                   <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-sm btn-success' %></td>
+                 <% end %>
+                </tr>
+            </tbody>
 
-</div>
-
-
-
-
-
+        </table>
+    </div>
+  </div>
