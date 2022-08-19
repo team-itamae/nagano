@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'making_status/update'
+    patch 'making_status/:id' => 'making_status#update'
+    get '' => 'homes#top'
 
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
@@ -9,7 +10,6 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show, :create, :new, :edit, :update]
   end
 
-    get '/admin' => 'admin/homes#top'
 
     get 'adresses/index' => 'public/adresses#index'
     get 'adresses/edit' => 'public/adresses#edit'
