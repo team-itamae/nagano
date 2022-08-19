@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     get '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show'
 
-  get '/' => "public/homes#top"
+  root to: "public/homes#top"
   get '/about' => "public/homes#about"
 
   devise_for :customers,skip: [:passwords], controllers: {
