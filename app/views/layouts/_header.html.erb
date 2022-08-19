@@ -16,7 +16,7 @@
 
             <a href="/admin/sign_out" class="btn btn-outline-dark" >ログアウト</a>
 
-        <% elseif customers_signed_in? %>
+        <% elsif customer_signed_in? %>
 
             <a href="/customers" class="btn btn-outline-dark" >マイページ</a>
 
@@ -24,7 +24,7 @@
 
             <a href="/cart_items" class="btn btn-outline-dark" >カート</a>
 
-            <a href="/customers/sign_out" class="btn btn-outline-dark" >ログアウト</a>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "btn btn-outline-dark" %>
 
         <% else %>
 
