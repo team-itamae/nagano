@@ -14,7 +14,7 @@
 
             <a href="/admin/genres" class="btn btn-outline-dark" >ジャンル一覧</a>
 
-            <a href="/admin/sign_out" class="btn btn-outline-dark" >ログアウト</a>
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-outline-dark" %>
 
         <% elsif customer_signed_in? %>
 
