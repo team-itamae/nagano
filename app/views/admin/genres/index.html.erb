@@ -1,57 +1,42 @@
 <div class='container'>
   <h3><div class="d-inline mt-5 px-3 bg-light text-dark">ジャンル一覧・追加</div></h3>
 
+　<br>
+  <br>
+
   <div class="row g-3 align-items-center">
-  　<br>
-  　<br>
   　<div class="col-auto">
     　<label for="name" class="col-form-label">ジャンル名</label>
   　</div>
-
   　<div class="col-auto">
        <%= form_with model: @genre, url: admin_genres_path do |form| %>
        <%= form.text_field :name, class: "form-control", placeholder: "ジャンル名" %>
     </div>
     <div class="col-5">
-       <%= form.submit "新規登録", class: "btn btn-success" %>
+       <%= form.submit "新規登録", class: "btn btn-success btn-lg" %>
        <% end %>
-
   　</div>
 　</div>
 
-<br>
-<br>
- <div class="row g-3 align-items-center">
-   <div class="col-8">
+ <br>
+ <br>
+
+  <div class="row g-3 align-items-center">
+   <div class="col-auto">
         <table class="table">
                 <tr>
                     <th><div class=" px-3 head-light">ジャンル</div></th>
                 </tr>
             <tbody>
-                <tr>
-                    <td>ケーキ</td>
-                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
-                </tr>
-                <tr>
-                    <td>プリン</td>
-                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
-                </tr>
-                <tr>
-                    <td>焼き菓子</td>
-                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
-                </tr>
-                <tr>
-                    <td>キャンディ</td>
-                     <td><%= link_to "編集する", edit_admin_genre_path(:id), class: 'btn btn-sm btn-success' %></td>
-                </tr>
-                <tr>
                  <% @genres.each do |genre| %>
-                   <td><%= genre.name %></td>
-                   <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-sm btn-success' %></td>
+                  <tr>
+                     <td><%= genre.name %></td>
+                     <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: 'btn btn-sm btn-success' %></td>
+                  </tr>
                  <% end %>
-                </tr>
             </tbody>
-
         </table>
-    </div>
+     </div>
   </div>
+   <%= paginate @genres %>
+</div>

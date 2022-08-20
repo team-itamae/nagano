@@ -2,7 +2,7 @@
   <h3><div class="d-inline mt-5 px-3 bg-light text-dark">商品新規登録</div></h3>
   <div class="col-lg-9 mx-auto">
   <br>
-  <%= form_with model: @item, url:'/items' do |f| %>
+  <%= form_with model: @item,url: '/admin/items', method: :post do |f| %>
   <table class="table table-borderless">
     <tr>
   <td>商品画像</td>
@@ -10,11 +10,11 @@
   </tr>
   <tr>
   <td>商品名</td>
-  <td><%= f.text_field :name %></td>
+  <td><%= f.text_field :name, :size=>"50" %></td>
   </tr>
   <tr>
-  <td>商品説明</td>
-  <td><%= f.text_area :introduction %></td>
+  <td class="rowspan=2">商品説明</td>
+  <td><%= f.text_area :introduction, :size=>"50×100" %></td>
   </tr>
   <tr>
   <td>ジャンル</td>
