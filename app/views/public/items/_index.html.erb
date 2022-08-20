@@ -1,0 +1,18 @@
+ <div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+
+    <% items.each do |item| %>
+       <div class="col">
+          <ul>
+            <%= link_to "/items/#{item.id}" do %>
+            <%= image_tag 'cake_top.png', size:'200x100' %>
+            <% end %>
+          </ul>
+          <ul><%= item.name %></ul>
+          <ul><%= item.price %></ul>
+       </div>
+    <% end %>
+
+ </div>
+</div>
+
