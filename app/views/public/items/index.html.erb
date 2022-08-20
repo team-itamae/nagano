@@ -1,2 +1,14 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+ <div class='container center'>
+   <div class="row g-3 align-items-center">
+        <h3><div class="d-inline mt-5 px-3 font-weight-bold">商品一覧</div></h3>
+　　　　
+　　　　<div class="col-auto">
+ 　　　　　　<%= render 'public/items/index', items: @items %>
+ 　　     </div>
+</div>
+
+  <%= paginate @items %>
+
+
+</div>
+   
