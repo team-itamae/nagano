@@ -2,6 +2,11 @@
   <nav class="navbar">
     <div class="container-fluid">
       <a href="/" class="btn btn-outline-dark btn-lg text-left" >LOGO</a>
+      <% if customer_signed_in? %>
+        <div class="text-center">
+          <%= "ようこそ、"+current_customer.name_sei+"さん！" %>
+        </div>
+      <% end %>
       <div class="text-right">
       <ul>
         <% if admin_signed_in? %>
