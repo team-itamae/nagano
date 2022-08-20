@@ -22,6 +22,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find_by(params[:id])
   end
 
   def edit

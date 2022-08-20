@@ -1,12 +1,15 @@
 <div class='container'>
   <h3><div class="d-inline p-3 mb-2 bg-light text-dark font-weight-bold">商品詳細</div></h3>
-    <div class'row'>
-      <div class='col-lg-3'>
+    <div class='row'>
+      <div class='col-md-3'>
+        <br>
         <tr>
-          <td><%= image_tag @book.user.get_profile_image(100,100) %></td>
+          <td><%= image_tag @item.image, size:"100x100" %></td>
         </tr>
-      <div class='col-lg-8'>
-        <table class='table'>
+      </div>
+
+      <div class='col-md-8'>
+        <table class='table table-borderless'>
           <tr>
             <th>商品名</th>
             <td><%= @item.name %></td>
@@ -23,16 +26,21 @@
             <th>税込価格<br>
                 （税抜価格)
             </th>
-            <td><%= @product.add_tax_price.to_s(:delimited) %> 円</td>
+            <td><%= @item.price.to_s(:delimited) %>(<%= @item.add_tax_price.to_s(:delimited) %>) 円</td>
           </tr>
           <tr>
             <th>販売ステータス</th>
-            <td></td>
+            <td>
+              <% if @item.is_active %>
+              販売中
+              <% else %>
+              販売停止中
+              <% end %>
+            </td>
           </tr>
       </table>
-      <div class='actions col-xs-9'>
+      <div class='form-group d-grid gap-1 col-5 mx-auto'>
         <%= link_to '編集する', edit_admin_item_path, class:'btn btn-sm btn-success' %>
-      </div>
       </div>
       </div>
     </div>
