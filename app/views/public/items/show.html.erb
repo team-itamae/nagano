@@ -1,26 +1,41 @@
 <div class='container center'>
-  <div class="row  align-items-center">
-    <div class="col-auto">
-      　<%= image_tag @item.image %>
-    </div>
 
-    <div class="col">
-      　<ul><%= @item.name %></ul>
-      　<ul><%= @item.introduction %></ul>
-      　<ul><h5>¥<%= @item.add_tax_price %>(税込)</h5></ul>
+  <div class="row  justify-content-center">
+      <div class="col-auto">
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image %>
+            <% else %>
+              <%= image_tag "no_image.jpg" %>
+            <% end %>
+      </div>
 
-    </div>
-
-
-       <%= form_with model: @cart_item, url: '/cart_items', local: true do |f| %>
-       <th><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] , include_blank: "個数選択"%></th>
-       <th><%= f.hidden_field :item_id, :value => @item.id %></th>
-       <th><%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %></th>
-       <% end %>
-
-
-
+      <div class="col-auto">
+       <p class="lh-1">
+      　<h4><p class="font-weight-bold"><%= @item.name %></p></h4>
+        <%= @item.introduction %>
+        </p>
+      　<p><h5>¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</h5></p>
+      </div>
   </div>
+
+
+  <div class="row  justify-content-end">
+      <div class="col-2">
+      <div class="form-group">
+        <%= form_with model: @cart_item, url: cart_items_path, method: :get do |f| %>
+        <th><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] , include_blank: "個数選択"%></th>
+        <th><%= f.hidden_field :item_id, :value => @item.id %></th>
+      </div>
+      </div>
+
+      <div class="col-3">
+      <div class="form-group">
+        <th><%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %></th>
+        <% end %>
+      </div>
+      </div>
+  </div>
+
 </div>
 
 
