@@ -1,13 +1,18 @@
 <div class='container center'>
   <div class="row  align-items-center">
     <div class="col-auto">
-      　<%= image_tag @item.image %>
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image %>
+            <% else %>
+              <%= image_tag "no_image.jpg" %>
+            <% end %>
+
     </div>
 
     <div class="col">
       　<ul><%= @item.name %></ul>
       　<ul><%= @item.introduction %></ul>
-      　<ul><h5>¥<%= @item.add_tax_price %>(税込)</h5></ul>
+      　<ul><h5>¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</h5></ul>
 
     </div>
 
