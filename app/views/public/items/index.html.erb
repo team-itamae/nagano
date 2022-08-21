@@ -1,14 +1,15 @@
  <div class='container center'>
    <div class="row g-3 align-items-center">
         <h3><div class="d-inline mt-5 px-3 font-weight-bold">商品一覧</div></h3>
-　　　　
+        <h4>(全<%= @item_count %>件)</h4>
+
 　　　　<div class="col-auto">
  　　　　　　<%= render 'public/items/index', items: @items %>
  　　     </div>
 </div>
 
-  <%= paginate @items %>
+ <ul class="nav justify-content-center"><%= paginate @items %></ul>
 
 
 </div>
-   
+
