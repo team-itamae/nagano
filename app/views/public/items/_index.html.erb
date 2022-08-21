@@ -7,7 +7,7 @@
             <%= link_to "/items/#{item.id}" do %>
 
             <% if item.image.attached? %>
-              <%= image_tag item.image %>
+              <%= image_tag item.image, size:'150x100' %>
             <% else %>
               <%= image_tag "no_image.jpg" %>
             <% end %>
@@ -15,8 +15,8 @@
             <% end %>
 
           </ul>
-          <ul><%= item.name %></ul>
-          <ul><%= item.price.to_s(:delimited) %></ul>
+          <ul><p class="font-weight-bold"><%= item.name %></p></ul>
+          <ul><p class="font-weight-bold">¥<%= item.price.to_s(:delimited) %></p></ul>
        </div>
     <% end %>
 
