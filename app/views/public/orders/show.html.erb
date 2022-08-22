@@ -1,2 +1,41 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class = "container">
+  <h3><div class="d-inline mt-5 px-3 bg-light text-dark">注文履歴詳細</div></h3>
+  <div class = "row">
+
+    <div class="col-7 ml-3">
+      
+      <table class="table table-bordered">
+        <tr>
+            <td class="secondary">氏名</td>
+            <td scope="col" style="width: 80%"><%= current_customer.name_sei %> <%= current_customer.name_mei %></td>
+        </tr>
+        <tr>
+            <td class="secondary">カナ</td>
+            <td scope="col" style="width: 80%"><%= current_customer.kana_sei %><%= current_customer.kana_mei %></td>
+        </tr>
+        <tr>
+            <td class="secondary">郵便番号</td>
+            <td scope="col" style="width: 80%"><%= current_customer.post_code %></td>
+        </tr>
+        <tr>
+            <td class="secondary">住所</td>
+            <td scope="col" style="width: 80%"><%= current_customer.address %></td>
+        </tr>
+        <tr>
+            <td class="secondary">電話番号</td>
+            <td scope="col" style="width: 80%"><%= current_customer.phone_number %></td>
+        </tr>
+        <tr>
+            <td class="secondary">メールアドレス</td>
+            <td scope="col" style="width: 80%"><%= current_customer.email %></td>
+        </tr>
+
+      </table>
+
+    </div>
+
+
+
+</div>
+
+</div>

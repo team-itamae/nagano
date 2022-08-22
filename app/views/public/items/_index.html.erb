@@ -1,0 +1,25 @@
+ <div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+
+    <% items.each do |item| %>
+       <div class="col">
+          <ul>
+            <%= link_to "/items/#{item.id}" do %>
+
+            <% if item.image.attached? %>
+              <%= image_tag item.image, size:'150x100' %>
+            <% else %>
+              <%= image_tag "no_image.jpeg" %>
+            <% end %>
+
+            <% end %>
+
+          </ul>
+          <ul><p class="font-weight-bold"><%= item.name %></p></ul>
+          <ul><p class="font-weight-bold">¥<%= item.price.to_s(:delimited) %></p></ul>
+       </div>
+    <% end %>
+
+ </div>
+</div>
+

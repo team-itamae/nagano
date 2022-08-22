@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_many :order_details
   has_many :cart_items
 
+
   def get_item_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/cake_sample.jpg')
@@ -15,4 +16,7 @@ class Item < ApplicationRecord
   def add_tax_price
     (self.price * 1.08).round
   end
+
+end
+
 end

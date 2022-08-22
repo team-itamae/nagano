@@ -1,2 +1,87 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container col-lg-9">
+  <h3><div class="d-inline mt-5 px-4 bg-light text-dark">
+    会員情報編集
+  </div></h3>
+</div>
+<br>
+<div class="container col-lg-10 mb-5">
+  <table class="table table-borderless">
+    <thead>
+      <th style="width: 20%"></th>
+      <th style="width: 10%"></th>
+      <th style="width: 40%"></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <%= form_with model: @customer, url:  '/customers', method: :patch do |f| %>
+    <tr>
+      <td>
+        <h6>氏名</h6>
+      </td>
+      <td>
+        <%= f.text_field :name_sei %>
+      </td>
+      <td>
+        <%= f.text_field :name_mei %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>フリガナ</h6>
+      </td>
+      <td>
+        <%= f.text_field :kana_sei %>
+      </td>
+      <td>
+        <%= f.text_field :kana_mei %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>郵便番号</h6>
+      </td>
+      <td>
+        <%= f.text_field :post_code %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>住所</h6>
+      </td>
+      <td colspan="2">
+        <%= f.text_field :address, :size=>"80" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>電話番号</h6>
+      </td>
+      <td>
+        <%= f.text_field :phone_number %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>メールアドレス</h6>
+      </td>
+      <td>
+        <%= f.email_field :email %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+          <%= f.submit '編集内容を保存', class: "btn btn-success px-5" %>
+      </td>
+      <% end %>
+      <td>
+        <div class="d-grid gap-1 mx-auto text-center">
+          <%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger px-3 mx-auto" %>
+        </div>
+      </td>
+    </tr>
+    
+    </tbody>
+  </table>
+</div>
