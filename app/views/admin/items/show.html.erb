@@ -4,17 +4,13 @@
       <div class='col-md-3'>
         <br>
         <tr>
-          <td>
-            <% if @item.image.attached? %>
-              <%= image_tag @item.image %>
-            <% else %>
-              <%= image_tag "no_image.jpg" %>
-            <% end %>
-          </td>
+
+          <td><%= image_tag @item.get_item_image(250,250) %></td>
+
         </tr>
       </div>
 
-      <div class='col-md-8'>
+      <div class='col-md-9'>
         <table class='table table-borderless'>
           <tr>
             <th>商品名</th>
@@ -38,15 +34,15 @@
             <th>販売ステータス</th>
             <td>
               <% if @item.is_active %>
-              販売中
+                <span class="text text-success">販売中</span>
               <% else %>
-              販売停止中
+                <span class="text text-muted">販売停止中</span>
               <% end %>
             </td>
           </tr>
       </table>
       <div class='form-group d-grid gap-1 col-5 mx-auto'>
-        <%= link_to '編集する', edit_admin_item_path, class:'btn btn-sm btn-success' %>
+        <%= link_to '編集する', edit_admin_item_path, class:'btn btn-success btn-lg' %>
       </div>
       </div>
     </div>
