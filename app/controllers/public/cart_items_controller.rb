@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  
   def index
     @cart_items = cart_items.all
   end
@@ -27,7 +28,7 @@ class Public::CartItemsController < ApplicationController
             　@cart_items = cart_items.all
             　render 'index'
         else　
-            render 'index'
+              render 'index'
         end
   end
   
