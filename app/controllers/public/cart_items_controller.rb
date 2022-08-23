@@ -2,17 +2,28 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = CartItem.all
-    #@item = Item.find(params[:id])
     @cart_item_price = 0
   end
 
   def update
+    @cart_item = current_customer.cart_items.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      # indexにリダイレクト
+      redirect_to cart_items_path
+    else
+      @cart_items = current_customer.cart_items.all
+      render :index
+    end
   end
 
   def destroy
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   def create
