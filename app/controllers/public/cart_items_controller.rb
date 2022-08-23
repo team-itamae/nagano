@@ -27,22 +27,23 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+    @cart_items = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
     @cart_item = current_customer.cart_items.new(cart_item_params)
     @cart_item.save
-    redirect_to cart_items_path
-    
-      # if @cart_item.present?
-      #       @cart_item.quantity += params[:cart_item][:quantity].to_i
-      #       @cart_item.save
-      #       redirect_to cart_items_path
-      # elsif @cart_item.save
-      #       @cart_items = current_customer.cart_items.all
-      #       render 'index'
-      # else　
-      #       render 'index'
-      # end
-       
+    # redirect_to cart_items_path
+
+      if @cart_items.present?
+            @cart_items.quantity += params[:cart_item][:quantity].to_i
+            @cart_item.save
+            redirect_to cart_items_path
+
+      elsif @cart_item.save
+            @cart_items = current_customer.cart_items.all
+            redirect_to cart_items_path
+      else
+            render 'index'
+      end
+
   end
 
 
