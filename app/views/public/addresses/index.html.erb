@@ -1,0 +1,68 @@
+<div class="container col-lg-8">
+  <h3><div class="d-inline mt-5 px-4 bg-light text-dark">
+    配送先登録/一覧
+  </div></h3>
+</div>
+<div class="container col-lg-10">
+  <table class="table table-borderless ml-3 mb-5">
+    <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
+    <tr>
+      <td>
+        郵便番号(ハイフンなし)
+      </td>
+      <td>
+        <%= f.text_field :post_code, autocomplete: "postal_code" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        住所
+      </td>
+      <td>
+        <%= f.text_field :address, autocomplete: "street-address",:size=>"50" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        宛名
+      </td>
+      <td>
+        <%= f.text_field :name, autocomplete: "name" %>
+      </td>
+      <td>
+        <%= f.submit '確認画面へ進む', class: 'btn btn-success px-5' %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+  <br>
+  <table class="table table-bordered border-dark", style="width: 75%">
+    <thead class="thead-light">
+      <tr>
+        <th style="width: 10%">郵便番号</th>
+        <th style="width: 35%">住所</th>
+        <th style="width: 10%">宛名</th>
+        <th style="width: 20%"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address| %>
+        <tr>
+          <td>
+            <%= address.post_code %>
+          </td>
+          <td>
+            <%= address.address %>
+          </td>
+          <td>
+            <%= address.name %>
+          </td>
+          <td>
+            <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-success" %>
+            <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
