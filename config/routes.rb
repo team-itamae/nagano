@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+
     patch 'making_status/:id' => 'making_status#update'
     get '' => 'homes#top'
+
 
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :create, :new, :edit, :update]
   end
+
 
 
     get '/adresses' => 'public/adresses#index'
@@ -37,10 +40,13 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe' => 'public/customers#unsubscribe'
     patch '/customers/withdraw' => 'public/customers#withdraw'
 
+
     get '/items' => 'public/items#index'
     get '/items/:id' => 'public/items#show'
 
+
   root to: "public/homes#top"
+
   get '/about' => "public/homes#about"
 
   devise_for :customers,skip: [:passwords], controllers: {

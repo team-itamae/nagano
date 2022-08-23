@@ -5,6 +5,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @order = Order.find_by(params[:id])
+    @total = 0
   end
 
   def complete
@@ -17,6 +19,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find_by(params[:id])
+    @total = 0
   end
   
   private

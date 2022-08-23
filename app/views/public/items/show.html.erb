@@ -3,9 +3,9 @@
   <div class="row  justify-content-center">
       <div class="col-auto">
             <% if @item.image.attached? %>
-              <%= image_tag @item.image %>
+              <%= image_tag @item.image, size:'300x200' %>
             <% else %>
-              <%= image_tag "no_image.jpg" %>
+              <%= image_tag "no_image.jpeg" %>
             <% end %>
       </div>
 
@@ -18,24 +18,18 @@
       </div>
   </div>
 
-
+<%= form_with model: @cart_item,url: cart_items_path, method: :post do |f| %>
   <div class="row  justify-content-end">
       <div class="col-2">
-      <div class="form-group">
-        <%= form_with model: @cart_item, url: cart_items_path, method: :get do |f| %>
-        <th><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] , include_blank: "個数選択"%></th>
-        <th><%= f.hidden_field :item_id, :value => @item.id %></th>
-      </div>
+          <th><%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] , include_blank: "個数選択"%></th>
+          <th><%= f.hidden_field :item_id, :value => @item.id %></th>
       </div>
 
       <div class="col-3">
-      <div class="form-group">
-        <th><%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %></th>
-        <% end %>
+          <th><%= f.submit "カートに入れる", class: "btn btn-success btn-sm" %></th>
       </div>
-      </div>
+
+      <% end %>
   </div>
 
 </div>
-
-
