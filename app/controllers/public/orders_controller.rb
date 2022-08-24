@@ -27,9 +27,10 @@ class Public::OrdersController < ApplicationController
         @order.post_code = params[:order][:post_code]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
+
         else
             render 'new'
-        end
+    end
 
 
   end
@@ -61,8 +62,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    # @order = Order.find(params[:id])
-    # @ordered_items = @order.ordered_items
+    @order = Order.find(params[:id])
+    @order_detail = @order.order_detail
   end
 
   private
