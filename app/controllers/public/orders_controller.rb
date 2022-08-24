@@ -5,26 +5,32 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.find_by(params[:id])
-    @total = 0
+    @cart_items = CartItem.find(params[:cart_item])
+    @shipping_price = 800
+    # @order = Order.new(order_params)
+    # @orders = Order.all
+    # @item = Item.find(params[:item_id])
+    # @order = @item.order.new(order_params)
   end
 
   def complete
   end
 
   def create
+    @order = Oder.new(order_params)
+    @order.customer_id = current_customer.id
   end
 
   def index
   end
 
   def show
-    @order = Order.find_by(params[:id])
+    @order = Order.find_by(id: params[:id])
     @total = 0
   end
-  
+
   private
-    
+
   def order_params
     params.require(:order).permit(:payment_method, :address, :post_code, :name)
   end
