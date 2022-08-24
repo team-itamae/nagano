@@ -108,9 +108,9 @@ ActiveRecord::Schema.define(version: 2022_08_19_072323) do
   create_table "order_details", force: :cascade do |t|
     t.integer "price", null: false
     t.integer "quantity", null: false
+    t.integer "making_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "making_status", null: false
     t.integer "item_id", null: false
     t.integer "order_id", null: false
   end
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 2022_08_19_072323) do
     t.integer "price_all", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

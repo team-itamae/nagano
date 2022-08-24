@@ -24,29 +24,40 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-    
-    get '' => 'homes#top'
 
     patch 'making_status/:id' => 'making_status#update'
+    get '' => 'homes#top'
+
 
     resources :orders, only: [:show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :create, :new, :edit, :update]
   end
-  
+
+  post '/orders/confirm' => 'public/orders#confirm'
+  get '/orders/complete' => 'public/orders#complete'
+
   scope module: 'public' do
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    
+
     resources :orders, only: [:new, :create, :index, :show]
-    
+
     resources :cart_items, only: [:update, :create, :index, :destroy]
-    
+
     resources :items, only: [:index, :show]
 
 end
 
-  
+  root to: "public/homes#top"
+
+  get '/about' => "public/homes#about"
+  delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
+
+  get '/customers/unsubscribe' => 'public/customers#unsubscribe'
+  patch '/customers/withdraw' => 'public/customers#withdraw'
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
