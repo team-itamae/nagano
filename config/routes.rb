@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-  
-  root to: "public/homes#top"
 
   get '/about' => "public/homes#about"
-  
+
   post '/orders/confirm' => 'public/orders#confirm'
   get '/orders/complete' => 'public/orders#complete'
-  
+
   delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
-  
+
   get '/customers' => 'public/customers#show'
   get '/customers/edit' => 'public/customers#edit'
   patch '/customers' => 'public/customers#update'
