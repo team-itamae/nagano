@@ -25,12 +25,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '' => 'homes#top'
-    patch 'making_status/:id' => 'making_status#update'
 
     resources :orders, only: [:show, :update]
+    patch 'order_details/:id' => 'order_details#update', as:'order_detail'
+
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :create, :new, :edit, :update]
+
+
   end
 
   scope module: 'public' do
