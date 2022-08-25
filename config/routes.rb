@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get '' => 'homes#top'
 
     resources :orders, only: [:show, :update]
-    patch 'making_status/:id' => 'making_status#update'
+    patch 'order_details/:id' => 'order_details#update', as:'order_detail'
 
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
