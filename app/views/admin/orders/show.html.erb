@@ -60,16 +60,20 @@
              </thead>
               <tbody>
                 <% @order_details.each do |order_detail| %>
+                   <tr>
                     <td class = "align-middle"><%= order_detail.item.name %></td>
                     <td class = "align-middle text-center"><%= order_detail.item.add_tax_price.to_s(:delimited) %></td>
                     <td class = "align-middle text-center"><%= order_detail.quantity %></td>
                     <td class = "align-middle text-center"><%= order_detail.subtotal.to_s(:delimited) %></td>
 
-                  <%= form_with model: @order, url: admin_order_path, method: "patch" do |f| %>
-                    <td class = "align-middle text-center"><%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %></td>
-                    <td><%= f.submit '更新', class: 'btn btn-success btn-sm' %></td>
-                  <% end %>
+                 <td>
+                   <%= form_with model: order_detail, url:  admin_order_detail_path(order_detail.id), method: "patch" do |f| %>
+                    <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+                   <%= f.submit '更新', class: 'btn btn-success btn-sm' %>
+                    <% end %>
+                  </td>
                 <% end %>
+          </tr>
               </tbody>
             </table>
           </div>
