@@ -1,5 +1,6 @@
 
-class Public::OrdersController < ApplicationController
+class Public::OrdersController < Public::ApplicationController
+
   before_action :authenticate_customer!
 
   def new
@@ -65,12 +66,12 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_detail = @order.order_detail
+    @order_details = @order.order_details
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :address, :post_code, :name, :status, :shipping_price, :price_all, :customer_id)
+    params.require(:order).permit(:payment_method, :address, :post_code, :name, :status, :shipping_price, :price_all)
   end
 end
