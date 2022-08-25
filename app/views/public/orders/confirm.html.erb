@@ -14,7 +14,7 @@
           </thead>
 
           <tbody>
-            <% total = 0 %>
+            <%# total = 0 %>
             <% @cart_items.each do |cart_item| %>
                <tr>
                 <td class = "align-middle">
@@ -26,7 +26,7 @@
                   <%= cart_item.item.name %>
                   </td>
                 <td class = "align-middle text-right"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-                <td class = "align-middle text-center"><%= cart_item.quantity %></td>
+                <td class = "align-middle text-right"><%= cart_item.quantity %></td>
                 <td class = "align-middle text-right"><%= cart_item.subtotal.to_s(:delimited) %></td>
               </tr>
             <% end %>
@@ -50,7 +50,7 @@
                     <tr>
                         <% @price_all = @shipping_price +  @total %>
                         <th class="secondary bg-light">請求金額</th>
-                        <td scope="col" style="width: 60%"><%=  @price_all.to_s(:delimited) %></td>
+                        <td scope="col" style="width: 60%"><%= @price_all.to_s(:delimited) %></td>
                     </tr>
                   </table>
             </div>

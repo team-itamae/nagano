@@ -1,4 +1,3 @@
-
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
@@ -64,7 +63,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_detail = @order.order_detail
+    @order_details = @order.order_details
   end
 
   private
