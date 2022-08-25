@@ -1,26 +1,51 @@
-<h2>Log in</h2>
+<div class = "container col-lg-10">
+  <h3><div class="d-inline mt-5 px-3 bg-light text-dark">ログイン</div></h3>
+  <br>
+  <div class = "col-lg-9">
+    <h5><div class="d-inline mt-5 px-3 bg-light text-dark">会員の方はこちらからログイン</div></h5>
+    <br>
+    <div class='container col-lg-10'>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <div class="field">
+              <td>
+                <%= f.label :メールアドレス %>
+              </td>
+              <td>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",:size=>"50" %>
+              </td>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+            </div>
+          </tr>
+          <tr>
+            <div class="field">
+              <td>
+                <%= f.label :パスワード %>
+              </td>
+              <td>
+                <%= f.password_field :password, autocomplete: "current-password",:size=>"50" %>
+              </td>
+            </div>
+          </tr>
+          <tr>
+            <td></td>
+            <div class="actions">
+              <td>
+                <%= f.submit 'ログイン', class: 'btn btn-lg btn-primary px-5'%>
+              </td>
+            </div>
+          </tr>
+        </table>
+      <% end %>
+    <br>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+      <h5><div class="d-inline mt-5 px-3 bg-light text-dark">会員登録がお済みでない方</div></h5>
+    <br>
+    <div class="container col-lg-10">
+      <col>
+        <a href="/customers/sign_up">こちら</a>　からログインしてください。
+      </col>
+    </div>
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
