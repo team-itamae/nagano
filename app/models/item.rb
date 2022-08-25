@@ -3,6 +3,9 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :order_details
   has_many :cart_items
+  has_many :orders, through: :order_details
+
+
 
   def get_item_image(width, height)
     unless image.attached?
@@ -13,7 +16,7 @@ class Item < ApplicationRecord
   end
 
   def add_tax_price
-    (self.price * 1.08).round
+    (self.price * 1.1).round
   end
 
 end
