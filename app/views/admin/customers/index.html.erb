@@ -3,22 +3,41 @@
     <div class="d-inline p-3 mb-2 bg-light text-dark font-weight-bold">
       <h3>会員一覧</h3>
       <br>
-      
+
       <div class='col-md-9 mx-auto'>
       <table class='table table-borderless'>
-        <tbody>
+        <thead>
           <tr>
-            <td></td>
-            <td></td>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
           </tr>
-          
-          
+        </thead>
+
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><% customer.id %></td>
+            <td>
+              <%= link_to admin_customer_path(customer.id) do %>
+              <%= customer.name_sei + customer.name_mei %>
+              <% end %>
+            </td>
+            <td><% customer.email %></td>
+            <td>
+              <% if customer.is_deleted %>
+                <span class="label label-secondary">退会</span>
+              <% else %>
+                <span class="label label-success">有効</span>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
         </tbody>
       </table>
       </div>
-      
-      
-      
+
     </div>
   </div>
 </div>
