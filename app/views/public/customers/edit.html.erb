@@ -4,6 +4,8 @@
   </div></h3>
 </div>
 <br>
+
+<%= form_with model: @customer, url:  '/customers', method: :patch do |f| %>
 <div class="container col-lg-10 mb-5">
   <table class="table table-borderless">
     <thead>
@@ -13,7 +15,6 @@
       <th></th>
     </thead>
     <tbody>
-      <%= form_with model: @customer, url:  '/customers', method: :patch do |f| %>
     <tr>
       <td>
         <h6>氏名</h6>
@@ -74,14 +75,14 @@
       <td>
           <%= f.submit '編集内容を保存', class: "btn btn-success px-5" %>
       </td>
-      <% end %>
       <td>
         <div class="d-grid gap-1 mx-auto text-center">
           <%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger px-3 mx-auto" %>
         </div>
       </td>
     </tr>
-    
+
     </tbody>
   </table>
 </div>
+<% end %>
