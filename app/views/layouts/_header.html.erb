@@ -1,14 +1,15 @@
 <header class="border-bottom border-dark mb-5">
   <nav class="navbar">
     <div class="container-fluid">
-      <a href="/" class="btn btn-outline-dark btn-lg text-left" >LOGO</a>
+      <div class="col-lg-4">
+      <%= link_to "LOGO", root_path, class: "btn btn-outline-dark btn-lg text-left px-5" %>
+      </div>
       <% if customer_signed_in? %>
         <div class="text-center">
           <%= "ようこそ、"+current_customer.name_sei+"さん！" %>
         </div>
       <% end %>
-      <div class="text-right">
-      <ul>
+      <div class="col-lg-6 float-end text-right">
         <% if admin_signed_in? %>
 
             <a href="/admin/items" class="btn btn-outline-dark" >商品一覧</a>
@@ -42,13 +43,18 @@
             <a href="/customers/sign_in" class="btn btn-outline-dark" >ログイン</a>
 
         <% end %>
-        </ul>
-        </div>
+        
         <br>
-        <div class="input-group text-right">
-  <input type="text" class="form-control10">
-  <i class="fa-solid fa-magnifying-glass" style="color: primary;"></i>
+        <br>
+        <div class="input-group  float-end text-right">
+          <form class="form-inline ml-auto">
+  <input type="text" class="form-control10 ml-auto" />
+
+  <i class="fa-solid fa-magnifying-glass text-primary" style="color: primary;"></i>
+
+  </form>
 </div>
+  </div>
   </div>
   </div>
   </nav>
