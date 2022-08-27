@@ -1,10 +1,10 @@
 <div class='container'>
-  <h3><div class='d-inline p-3 mb-2 bg-light text-dark font-weight-bold'>注文履歴一覧</div></h3>
+  <h3><div class='d-inline mt-5 px-3 bg-light text-dark'>注文履歴一覧</div></h3>
     <div class='row'>
 
       <div class='col-md-10'>
-        <table class='table thead-light table-bordered'>
-          <thead>
+        <table class='table table-bordered border-dark'>
+          <thead class='thead-light'>
             <tr>
               <th>注文日</th>
               <th>配送先</th>
@@ -17,11 +17,20 @@
           <tbody>
             <% @orders.each do |order| %>
             <tr>
-              <td><% order.post_code %>
-                  <% order.address %>
-                  <% order.name %>
+              <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td>
+                  <%= order.post_code %>
+                  <%= order.address %>
+                  <%= order.name %>
               </td>
-              <td></td>
+              <td>
+                  <%= order.order_items each do |order_item| %>
+                    <%= order_item.item.name %>
+                  <% end %>
+              </td>
+              <td><%= oder.price_all.to_s(:delimited) %></td>
+              <td><%= order.status %></td>
+              <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sm btn-primary" %></td>
             </tr>
             <% end %>
           </tbody>
