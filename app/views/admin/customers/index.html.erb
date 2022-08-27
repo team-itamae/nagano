@@ -1,7 +1,6 @@
 <div class='container'>
   <div class'row'>
-    <div class="d-inline mt-5 px-3 bg-light text-dark font-weight-bold">
-      <h3>会員一覧</h3>
+    <h3><div class="d-inline mt-5 px-3 bg-light text-dark font-weight-bold">会員一覧</div></h3>
       <br>
 
       <div class='col-md-9 mx-auto'>
@@ -18,18 +17,18 @@
         <tbody>
           <% @customers.each do |customer| %>
           <tr>
-            <td><% customer.id %></td>
+            <td><%= customer.id %></td>
             <td>
               <%= link_to admin_customer_path(customer.id) do %>
-              <%= customer.name_sei + customer.name_mei %>
+              <span style="color: black;"><%= customer.name_sei + customer.name_mei %></span>
               <% end %>
             </td>
-            <td><% customer.email %></td>
+            <td><%= customer.email %></td>
             <td>
               <% if customer.is_deleted %>
-                <span class="label label-secondary">退会</span>
+                <div class="text-success font-weight-bold">退会</div>
               <% else %>
-                <span class="label label-success">有効</span>
+                <div class="text-danger font-weight-bold">有効</div>
               <% end %>
             </td>
           </tr>
@@ -38,7 +37,6 @@
       </table>
       </div>
 
-    </div>
   </div>
     <div class= "text-center"><%= paginate @customers %></div>
 </div>
