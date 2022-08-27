@@ -19,7 +19,7 @@ class Public::OrdersController < Public::ApplicationController
 
         # collection.selectであれば
         elsif params[:order][:select_address] == "1"
-        ship = Address.find(params[:order][:customer_id])
+        ship = Address.find(params[:order][:address_id])
         @order.post_code = ship.post_code
         @order.address = ship.address
         @order.name = ship.name

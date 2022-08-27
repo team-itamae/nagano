@@ -3,9 +3,10 @@
     配送先登録/一覧
   </div></h3>
 </div>
+
+<%= form_with model: @address, url: addresses_path, method: :post do |f| %>
 <div class="container col-lg-10">
   <table class="table table-borderless ml-3 mb-5">
-    <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
     <tr>
       <td>
         郵便番号(ハイフンなし)
