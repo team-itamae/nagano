@@ -13,4 +13,5 @@ class Order < ApplicationRecord
     item.add_tax_price * quantity
   end
 
+
 end
