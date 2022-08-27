@@ -9,7 +9,7 @@
                     <th>購入者</th>
                     <td>
                         <%= link_to  admin_customer_path(@order.id) do %>
-					              <%= @order.name %>
+					               <%= @order.customer.name_sei+""+@order.customer.name_mei %>
 					              <% end %>
 			              </td>
 	              </tr>

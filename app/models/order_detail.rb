@@ -13,4 +13,7 @@ class OrderDetail < ApplicationRecord
  def subtotal
     item.add_tax_price * quantity
  end
+
+
+
 end
