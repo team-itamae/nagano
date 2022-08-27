@@ -5,10 +5,11 @@
       <h3><%= @customer.name_sei + @customer.name_mei %>さんの会員情報編集</h3>
     </div>
 
+    <%= form_with model: @customer,url: admin_customer_path, method: "patch" do |f| %>
     <div class='col-md-9 mx-auto'>
       <table class='table table-borderless'>
         <tbody>
-          <%= form_with model: @customer,url: admin_customer_path, method: "patch" do |f| %>
+
           <tr>
             <td>会員</td>
             <td><%= @customer.id %></td>
@@ -46,14 +47,14 @@
               <%= f.radio_button :is_deleted, true %>退会
             </td>
           </tr>
-          <% end %>
+
         </tbody>
       </table>
 
         <div class="form-group d-grid gap-1 col-5 mx-auto">
           <%= f.submit '保存を変更', class: 'btn btn-success btn-lg' %>
         </div>
-
+     <% end %>
     </div>
   </div>
 </div>

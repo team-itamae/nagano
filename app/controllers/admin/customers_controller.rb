@@ -12,6 +12,9 @@ class Admin::CustomersController < Admin::ApplicationController
   end
 
   def update
+    @customer = Customer.find(params[:id])
+    @customer.save(customer_params)
+    redirect_to admin_order_path
   end
 
   private

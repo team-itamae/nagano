@@ -4,7 +4,13 @@
       <div class='col-md-4 col-md-offset-2'>
         <br>
         <tr>
-          <td><%= image_tag @item.get_item_image(250,250) %></td>
+　　　　　　　　　　　　　　　　　　 <td>
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image, size:'300x200' %>
+            <% else %>
+              <%= image_tag "no_image.jpeg" %>
+            <% end %>
+       　　　 </td>
         </tr>
       </div>
 
