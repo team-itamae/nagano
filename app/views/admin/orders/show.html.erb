@@ -1,6 +1,7 @@
 <div class = "container">
   <h3><div class="d-inline mt-5 px-3 bg-light text-dark">注文履歴詳細</div></h3>
 
+
   　<div class = "row">
       <div class ="col-7">
                <table class="table table-borderless">
@@ -35,9 +36,12 @@
 
                 <tr>
                     <th>注文ステータス</th>
-                     <%= form_with model: @order,url: admin_order_path, method: "patch" do |f| %>
-                     <td><%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]}, class: 'form-control' %></td>
-                     <td><%= f.submit '更新', class: 'btn btn-success btn-sm' %></td>
+
+                     <td>
+                       <%= form_with model: @order,url: admin_order_path, method: :patch do |f| %>
+                       <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]}, class: 'form-control' %>
+                       <%= f.submit '更新', class: 'btn btn-success btn-sm' %>
+                     </td>
                     <td></td>
                 </tr>
                      <% end %>
@@ -67,10 +71,11 @@
                     <td class = "align-middle text-center"><%= order_detail.subtotal.to_s(:delimited) %></td>
 
                  <td>
-                   <%= form_with model: order_detail, url:  admin_order_detail_path(order_detail.id), method: "patch" do |f| %>
-                    <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+                   <%= form_with model: order_detail, url:  admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+                   <%= f.select :making_status, OrderDetail.making_statuses.keys.map {|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+                   <%= f.hidden_field :order_detail_id, value: order_detail.id %>
                    <%= f.submit '更新', class: 'btn btn-success btn-sm' %>
-                    <% end %>
+                   <% end %>
                   </td>
                 <% end %>
           </tr>
