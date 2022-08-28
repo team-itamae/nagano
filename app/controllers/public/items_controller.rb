@@ -1,4 +1,6 @@
-class Public::ItemsController < ApplicationController
+class Public::ItemsController < Public::ApplicationController
+   skip_before_action :authenticate_customer!
+
 
   def index
      @items = Item.all.order('id DESC').page(params[:page]).per(8)
