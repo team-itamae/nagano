@@ -53,11 +53,6 @@
     </div>
 
 
-    <div class = "row mb-3">
-      <div class = "col">
-        <%= link_to "買い物を続ける", root_path, class: "btn btn-primary btn-lg" %>
-      </div>
-
       <div class = "col-md-3">
         <table class = "table table-bordered">
           <tbody>
@@ -70,7 +65,7 @@
         </table>
       </div>
     </div>
-    
+
     <div class="offset-md-5 mt-3">
         <%= link_to "買い物を続ける", root_path, class: "btn btn-primary rounded-pill" %>
         <% if @cart_items.any? %>
