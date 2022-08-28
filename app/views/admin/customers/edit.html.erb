@@ -1,9 +1,9 @@
 
 <div class='container'>
   <div class'row'>
-    <div class="d-inline p-3 mb-2 bg-light text-dark font-weight-bold">
-      <h3><%= @customer.name_sei + @customer.name_mei %>さんの会員情報編集</h3>
-    </div>
+    <h3><div class="d-inline p-3 mb-2 bg-light text-dark font-weight-bold">
+      <%= @customer.name_sei + @customer.name_mei %>さんの会員情報編集
+    </div></h3>
 
     <%= form_with model: @customer,url: admin_customer_path, method: "patch" do |f| %>
     <div class='col-md-9 mx-auto'>
